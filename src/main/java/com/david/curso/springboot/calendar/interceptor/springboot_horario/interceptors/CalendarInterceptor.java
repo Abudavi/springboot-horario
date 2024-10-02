@@ -15,7 +15,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@Component
+@Component("calendarInterceptor")
 public class CalendarInterceptor implements HandlerInterceptor {
     @Value("${config.calendar.open}")
     private Integer open;
@@ -54,7 +54,7 @@ public class CalendarInterceptor implements HandlerInterceptor {
         message.append("Hrs. Gracias");
 
         data.put("message", message.toString());
-        data.put("date", new Date());
+        data.put("date", new Date().toString());
 
         response.setContentType("application/json");
         response.setStatus(401);
